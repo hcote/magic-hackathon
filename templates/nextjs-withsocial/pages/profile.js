@@ -1,23 +1,19 @@
-import Layout from '../components/layout';
 import { useUser } from '../lib/hooks';
+import Layout from '../components/layout';
 
-const Home = () => {
-  const user = useUser();
+const Profile = () => {
+  const user = useUser({ redirectTo: '/login' });
 
   return (
     <Layout>
-      <h2>Home</h2>
-      {user ? (
+      {user && (
         <>
           <h2>Profile</h2>
           <pre style={{ overflow: 'auto' }}>{JSON.stringify(user, null, 2)}</pre>
         </>
-      ) : (
-        <div>Log in to continue</div>
       )}
-      <style jsx>{``}</style>
     </Layout>
   );
 };
 
-export default Home;
+export default Profile;
