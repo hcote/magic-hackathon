@@ -13,9 +13,8 @@ export default generator
       message: 'Choose a full-stack framework:',
       type: 'Select',
       choices: [
-        { name: 'express', message: 'Express' },
+        { name: 'express', message: 'React + Express' },
         { name: 'nextjs', message: 'NextJS' },
-        { name: 'react', message: 'React SPA' },
       ],
     },
 
