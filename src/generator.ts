@@ -1,4 +1,4 @@
-import { copy, zombi } from 'zombi';
+import { copy, sideEffect, zombi } from 'zombi';
 import { resolve } from 'path';
 
 const generator = zombi({
@@ -59,6 +59,11 @@ export default generator
     },
   ])
   .sequence(
+    // sideEffect(({ props }) => {
+    //   console.log(props);
+    //   process.exit(1);
+    // }),
+
     copy(
       ({ props }) =>
         [

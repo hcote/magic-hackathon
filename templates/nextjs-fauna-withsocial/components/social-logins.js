@@ -1,7 +1,7 @@
 import FadeIn from 'react-fade-in';
 
 const SocialLogins = ({ onSubmit }) => {
-  const providers = ['google', 'facebook', 'github'];
+  const providers = [<%- socialLogins.reduce((a, b) => a ? `${a}, '${b}'` : `'${b}'`, '') %>];
 
   return (
     <>
