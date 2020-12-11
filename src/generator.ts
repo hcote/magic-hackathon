@@ -4,10 +4,9 @@ import { resolve } from 'path';
 const generator = zombi({
   name: 'create-magic-app',
   templateRoot: resolve(__dirname, '..', 'templates'),
-  destinationRoot: resolve(__dirname, 'foo'),
 });
 
-generator
+export default generator
   .prompt<{ framework: string; database: string; socialLogins: string[] }>([
     {
       name: 'framework',
@@ -66,5 +65,3 @@ generator
       'my-magic-app',
     ),
   );
-
-export { generator };

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import meow from 'meow';
-import { generator } from './generator';
+import generator from './generator';
 
 const help = `
   Usage
@@ -30,5 +30,7 @@ const cli = meow({
 (async () => {
   if (cli.flags.help) cli.showHelp();
   if (cli.flags.version) cli.showVersion();
+
+  console.log();
   await generator.run();
 })();

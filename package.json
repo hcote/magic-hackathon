@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "dev": "yarn clean && tsc -w",
-    "build": "yarn clean && tsc",
+    "build": "yarn clean && tsc && chmod +x ./dist/cli.js",
     "clean": "rimraf dist"
   },
   "dependencies": {
