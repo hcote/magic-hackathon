@@ -1,4 +1,4 @@
-import { copy, exec, sideEffect, yarnInstall, zombi } from 'zombi';
+import { copy, yarnInstall, zombi } from 'zombi';
 import { resolve } from 'path';
 
 const generator = zombi({
@@ -59,11 +59,6 @@ export default generator
     },
   ])
   .sequence(
-    // sideEffect(({ props }) => {
-    //   console.log(props);
-    //   process.exit(1);
-    // }),
-
     copy(
       ({ props }) =>
         [
@@ -77,5 +72,4 @@ export default generator
     ),
 
     yarnInstall(),
-    exec('yarn dev'),
   );

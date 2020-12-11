@@ -16,6 +16,7 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "execa": "^5.0.0",
     "meow": "^8.0.0",
     "zombi": "^2.1.0"
   },

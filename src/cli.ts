@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import meow from 'meow';
+import execa from 'execa';
 import generator from './generator';
 
 const help = `
@@ -33,4 +34,11 @@ const cli = meow({
 
   console.log();
   await generator.run();
+  console.log();
+
+  // Start running the example app!
+
+  // eslint-disable-next-line
+  const isNext = !!require(`${process.cwd()}/package.json`).scripts?.dev;
+  await execa.command(`yarn ${isNext ? 'dev' : 'start'}`, { stdio: 'inherit' });
 })();
