@@ -11,10 +11,11 @@ export default generator
     {
       name: 'framework',
       message: 'Choose a full-stack framework:',
-      type: 'AutoComplete',
+      type: 'Select',
       choices: [
         { name: 'express', message: 'Express' },
         { name: 'nextjs', message: 'NextJS' },
+        { name: 'react', message: 'React SPA' },
       ],
     },
 
@@ -61,7 +62,9 @@ export default generator
   .sequence(
     copy(
       ({ props }) =>
-        [props.framework, props.database, props.socialLogins.length && 'withsocial'].filter(Boolean).join('-'),
+        [props.framework, props.database, props.socialLogins.length ? 'withsocial' : 'emailonly']
+          .filter(Boolean)
+          .join('-'),
       'my-magic-app',
     ),
   );
