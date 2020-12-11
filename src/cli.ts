@@ -2,6 +2,7 @@
 
 import meow from 'meow';
 import execa from 'execa';
+import CFonts from 'cfonts';
 import generator from './generator';
 
 const help = `
@@ -32,9 +33,17 @@ const cli = meow({
   if (cli.flags.help) cli.showHelp();
   if (cli.flags.version) cli.showVersion();
 
-  console.log();
+  CFonts.say('Create|Magic|App', {
+    font: 'tiny',
+    align: 'left',
+    colors: ['system'],
+    space: true,
+    gradient: ['#6851ff', '#a796ff'],
+    transitionGradient: true,
+  });
+
   await generator.run();
-  console.log();
+  console.log(); // Add empty line for spacing
 
   // Start running the example app!
 
