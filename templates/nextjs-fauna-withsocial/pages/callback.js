@@ -19,7 +19,9 @@ const Callback = () => {
       );
 
     // if "provider" is in query params, we know the user is logging in with social, otherwise handle it as email redirectURI
-    magic && router.query.provider ? finishSocialLogin() : finishEmailRedirectLogin();
+    if (magic) {
+      router.query.provider ? finishSocialLogin() : finishEmailRedirectLogin();
+    }
   }, [magic, router.query]);
 
   const finishSocialLogin = async () => {

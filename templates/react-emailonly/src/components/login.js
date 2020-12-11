@@ -22,21 +22,11 @@ const Login = () => {
 
     try {
       /* email magic link to user & specify redirectURI for after link is clicked */
-      const didToken = await magic.auth.loginWithMagicLink({
+      await magic.auth.loginWithMagicLink({
         email: e.currentTarget.email.value,
         redirectURI: `${process.env.REACT_APP_CLIENT_URL}/callback`,
       });
-      /* validate token with server */
-      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + didToken,
-        },
-        credentials: 'include',
-      });
-      /* redirect home if authentication was successful */
-      res.status === 200 && history.push('/');
+      history.push('/');
     } catch (error) {
       console.error('An unexpected error happened occurred:', error);
       setErrorMsg(error.message);

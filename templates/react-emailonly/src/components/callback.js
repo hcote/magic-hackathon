@@ -7,17 +7,17 @@ const Callback = (props) => {
   const [errorMsg, setErrorMsg] = useState('');
   const [showNextStep, setShowNextStep] = useState(false);
 
-  let mCred;
+  let magicCredentialParam;
 
   useEffect(() => {
     const params = new URLSearchParams(props.location.search);
-    mCred = params.get('magic_credential');
+    magicCredentialParam = params.get('magic_credential');
     !magic && setMagic(new Magic(process.env.REACT_APP_MAGIC_PUBLISHABLE_KEY));
     magic && finishEmailRedirectLogin();
-  }, [magic, props.location]);
+  }, [magic, props.location.search]);
 
   const finishEmailRedirectLogin = async () => {
-    if (mCred) {
+    if (magicCredentialParam) {
       console.log(true);
       try {
         let didToken = await magic.auth.loginWithCredential();
@@ -38,6 +38,7 @@ const Callback = (props) => {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + didToken,
       },
+      credentials: 'include',
     });
   };
 
