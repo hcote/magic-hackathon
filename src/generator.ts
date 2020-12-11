@@ -39,9 +39,9 @@ export default generator
       ],
     },
   ])
-  .prompt<{ magicPublicKey: string; magicSecretKey: string; faunaSecret?: string }>(({ props }) => [
+  .prompt<{ magicPublishableKey: string; magicSecretKey: string; faunaSecretKey?: string }>(({ props }) => [
     {
-      name: 'magicPublicKey',
+      name: 'magicPublishableKey',
       message: `Paste your Magic public API key:`,
       type: 'Input',
     },
@@ -53,7 +53,7 @@ export default generator
     },
 
     props.database.includes('fauna') && {
-      name: 'faunaSecret',
+      name: 'faunaSecretKey',
       message: `Paste your FaunaDB secret:`,
       type: 'Password',
     },
