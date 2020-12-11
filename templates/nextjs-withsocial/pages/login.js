@@ -6,7 +6,6 @@ import Form from '../components/form';
 import SocialLogins from '../components/social-logins';
 import { Magic } from 'magic-sdk';
 import { OAuthExtension } from '@magic-ext/oauth';
-import { WebAuthnExtension } from '@magic-ext/webauthn';
 
 const Login = () => {
   useUser({ redirectTo: '/', redirectIfFound: true });
@@ -17,7 +16,7 @@ const Login = () => {
     !magic &&
       setMagic(
         new Magic(process.env.NEXT_PUBLIC_MAGIC_PUBLISHABLE_KEY, {
-          extensions: [new OAuthExtension(), new WebAuthnExtension()],
+          extensions: [new OAuthExtension()],
         })
       );
     magic?.preload();
