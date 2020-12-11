@@ -9,8 +9,6 @@
 .DS_Store
 */.DS_Store
 */node_modules
-*/.env
-*/.env.local
 
 # Test artifacts
 /coverage

@@ -13,7 +13,7 @@ export default generator
       message: 'Choose a full-stack framework:',
       type: 'Select',
       choices: [
-        { name: 'express', message: 'React + Express' },
+        { name: 'react-express', message: 'React + Express' },
         { name: 'nextjs', message: 'NextJS' },
       ],
     },
@@ -61,7 +61,11 @@ export default generator
   .sequence(
     copy(
       ({ props }) =>
-        [props.framework, props.database, props.socialLogins.length ? 'withsocial' : 'emailonly']
+        [
+          props.framework,
+          props.database !== 'none' && props.database,
+          props.socialLogins.length ? 'withsocial' : 'emailonly',
+        ]
           .filter(Boolean)
           .join('-'),
       'my-magic-app',
