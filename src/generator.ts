@@ -1,4 +1,4 @@
-import { copy, sideEffect, zombi } from 'zombi';
+import { copy, exec, sideEffect, yarnInstall, zombi } from 'zombi';
 import { resolve } from 'path';
 
 const generator = zombi({
@@ -73,6 +73,9 @@ export default generator
         ]
           .filter(Boolean)
           .join('-'),
-      'my-magic-app',
+      '.',
     ),
+
+    yarnInstall(),
+    exec('yarn dev'),
   );
