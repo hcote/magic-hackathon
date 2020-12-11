@@ -2,6 +2,7 @@ import { copy, zombi } from 'zombi';
 import { resolve } from 'path';
 
 const generator = zombi({
+  name: 'create-magic-app',
   templateRoot: resolve(__dirname, '..', 'templates'),
   destinationRoot: resolve(__dirname, 'foo'),
 });
@@ -64,5 +65,6 @@ generator
         [props.framework, props.database, props.socialLogins.length && 'withsocial'].filter(Boolean).join('-'),
       'my-magic-app',
     ),
-  )
-  .run();
+  );
+
+export { generator };
