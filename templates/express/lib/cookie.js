@@ -11,7 +11,7 @@ const cookie = {
 
 const decryptCookie = async (cookie) => {
   try {
-    return await Iron.unseal(cookie, process.env.ENCRYPTION_SECRET, Iron.defaults);
+    return await Iron.unseal(cookie, process.env.TOKEN_SECRET, Iron.defaults);
   } catch (error) {
     console.log(error);
   }
@@ -19,7 +19,7 @@ const decryptCookie = async (cookie) => {
 
 const encryptCookie = async (metadata) => {
   try {
-    return await Iron.seal(metadata, process.env.ENCRYPTION_SECRET, Iron.defaults);
+    return await Iron.seal(metadata, process.env.TOKEN_SECRET, Iron.defaults);
   } catch (error) {
     console.log(error);
   }

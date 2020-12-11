@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: process.env.ENCRYPTION_SECRET,
+    secret: process.env.TOKEN_SECRET,
     resave: false, // don't resave session variables if nothing has changed
     saveUninitialized: true, // save empty value in session if there is no value
   })
